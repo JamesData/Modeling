@@ -36,20 +36,20 @@ tic;
 % %变化 
 % Jm=Jm+1;
 
-% load('Instances/T1.mat','T');
-% load('Instances/Jm1.mat','Jm');
+% % 初始化实例
+% p = path;
+% path(p,'..\');                      % 添加临时路径
+% 
+% [T,Jm,M] = GenInstance(30,10,1);    % 实例生成函数
+% % 保存实例
+% save('Instances\T.mat','T');
+% save('Instances\Jm.mat','Jm');
+% save('Instances\M.mat','M');
+% 
+% path(p);                            % 返回原MATLAB路径
 
-% 初始化实例
-p = path;
-path(p,'..\');                      % 添加临时路径
-
-[T,Jm,M] = GenInstance(30,10,1);    % 实例生成函数
-% 保存实例
-save('Instances\T.mat','T');
-save('Instances\Jm.mat','Jm');
-save('Instances\M.mat','M');
-
-path(p);                            % 返回原MATLAB路径
+load('Instances/T.mat','T');
+load('Instances/Jm.mat','Jm');
 
 MinVal = JSP(T,Jm,40,200,0.9,0.8,0.6);
 toc
