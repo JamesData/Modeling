@@ -42,12 +42,9 @@ tic;
 % 初始化实例
 p = path;
 path(p,'..\');                      % 添加临时路径
-
 [T,Jm,M] = GenInstance(30,10,1);    % 实例生成函数
 % 保存实例
 save('Instances\T.mat','T');
-save('Instances\Jm.mat','Jm');
-save('Instances\M.mat','M');
 
 path(p);                            % 返回原MATLAB路径
 
