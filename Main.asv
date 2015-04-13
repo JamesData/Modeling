@@ -27,12 +27,16 @@ Jm=[0 1 2 3 4 5 6 7 8 9;
 Jm=Jm+1;
 
 % MinVal = JSP(T,Jm,40,200,0.9,0.8,0.6);
-
+% 取工件个数和机器个数
+[PNumber,MNumber]=size(T); 
+% 工序总个数
+WNumber=PNumber*MNumber;
 % 调度工序
-load('PBest1.mat','P');
-% 调度工序时间
-load('PValBest1.mat','PVal');
-% 画甘特图
-Gantt(P,PVal,Jm);
+P=zeros(1,WNumber);
+load(P,PBest1.mat);
+% 调度工序
+PVal=zeros(2,WNumber);
+load(PVal,PValBest1.mat);
+Gantt(P,PVal,T.Jm);
 
 toc
