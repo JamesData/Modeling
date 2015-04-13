@@ -35,3 +35,4 @@ for i=1:WNumber
     %text(0.5*mPoint1+0.5*mPoint2,mText-0.5,word);
     text(mPoint1,mText-0.7,word);
 end
+end

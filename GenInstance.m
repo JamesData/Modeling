@@ -1,13 +1,15 @@
-%% [T,Jm] = GenInstance(PNumber,MNumber,InsNumber)
-% 生成实例，非重入。使用离散均匀分布生成加工工序时间和工件加工机器号
-% 参数说明：
-% PNumber       - 工件数量
-% MNumber       - 机器或每个工件工序数量
-% InsNumber     - 实例组数
-% T             - 各工件各工序使用的时间矩阵集合
-% Jm            - 各工件各工序使用的机器矩阵集合
+%% [T,Jm,M] = GenInstance(PNumber,MNumber,InsNumber)
+% 功能说明：生成实例，非重入。使用离散均匀分布生成加工工序时间和工件加工机器号
+% 输入参数：
+%           PNumber       - 工件数量
+%           MNumber       - 机器或每个工件工序数量
+%           InsNumber     - 实例数
+% 输出参数：
+%           T             - 各工件各工序使用的时间矩阵集合，[1,100]间的均匀分布
+%           Jm            - 各工件各工序使用的机器矩阵集合
+%           M             - 各机器组并行机台数,[10,20]间的均匀分布
 %%
-function [T,Jm] = GenInstance(PNumber,MNumber,InsNumber)
+function [T,Jm,M] = GenInstance(PNumber,MNumber,InsNumber)
 
 T = zeros(PNumber,MNumber,InsNumber);
 Jm = zeros(PNumber,MNumber,InsNumber);
@@ -30,4 +32,9 @@ for i = 1 : InsNumber
     end
     Jm(:,:,i) = jm;
 end
+M = zeros(MNumber,1);
+for i = 1 : MNumber
+   M(i) = 10 + unidrnd(10);
+end
+
 end

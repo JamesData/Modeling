@@ -55,5 +55,4 @@ for i=1: WNumber
     TM(1,m)=PVal(2,i);
     TP(1,b)=PVal(2,i); 
 end
-end
 

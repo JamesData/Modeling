@@ -1,6 +1,6 @@
 clear all; clc
 tic;
-% [T,Jm] = GenInstance(1000,10,1);
+% [T,Jm,M] = GenInstance(30,10,1);
 
 T=[29 78  9 36 49 11 62 56 44 21;
    43 90 75 11 69 28 46 46 72 30;
@@ -26,13 +26,22 @@ Jm=[0 1 2 3 4 5 6 7 8 9;
 
 Jm=Jm+1;
 
-% MinVal = JSP(T,Jm,40,200,0.9,0.8,0.6);
+% % 调度工序
+% load('data/PBest1.mat','P');
+% % 调度工序时间
+% load('data/PValBest1.mat','PVal');
+% % 画甘特图
+% Gantt(P,PVal,Jm);
 
-% 调度工序
-load('PBest1.mat','P');
-% 调度工序时间
-load('PValBest1.mat','PVal');
-% 画甘特图
-Gantt(P,PVal,Jm);
+[PNumber,MNumber] = size(T);
+% 初始时刻，工件释放时间
+R = zeros(PNumber,1);
+
+D = zeros(PNumber,1);
+for i = 1 : PNumber
+    d = calDeliveryDate(i,T,R);
+    D(i) = d;
+end
+
 
 toc
